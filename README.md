@@ -4,7 +4,7 @@ Black-and-white ambient sound workspace built with Astro and React.
 
 
 # Link 
-sparrow-s-ambient-sounds.vercel.app 
+ sparrow-s-ambient-sounds.vercel.app 
 
 ## Run locally
 
