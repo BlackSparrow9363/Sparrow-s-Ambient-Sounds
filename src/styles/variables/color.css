@@ -1,0 +1,87 @@
+:root {
+  --color-neutral-50: #050505;
+  --color-neutral-100: #111111;
+  --color-neutral-200: #1a1a1a;
+  --color-neutral-300: #2d2d2d;
+  --color-neutral-400: #454545;
+  --color-neutral-500: #707070;
+  --color-neutral-600: #9e9e9e;
+  --color-neutral-700: #c8c8c8;
+  --color-neutral-800: #dfdfdf;
+  --color-neutral-900: #f2f2f2;
+  --color-neutral-950: #fcfcfc;
+
+  /* Foreground */
+  --color-foreground: var(--color-neutral-950);
+  --color-foreground-subtle: var(--color-neutral-600);
+  --color-foreground-subtler: var(--color-neutral-500);
+
+  /* Theme surfaces */
+  --theme-body-glow: rgb(255 255 255 / 0.08);
+  --theme-body-bg: linear-gradient(180deg, #111 0%, #050505 100%);
+  --theme-hero-bg: linear-gradient(145deg, rgb(24 24 27 / 0.94), rgb(5 5 5 / 0.98));
+  --theme-panel-bg: linear-gradient(180deg, rgb(24 24 27 / 0.92), rgb(9 9 11 / 0.96));
+  --theme-menu-bg: linear-gradient(180deg, rgb(24 24 27 / 0.98), rgb(9 9 11 / 0.98));
+  --theme-card-bg: rgb(255 255 255 / 0.03);
+  --theme-card-bg-strong: rgb(255 255 255 / 0.04);
+  --theme-card-hover: rgb(255 255 255 / 0.08);
+  --theme-soft-border: rgb(255 255 255 / 0.08);
+  --theme-muted-badge: rgb(0 0 0 / 0.2);
+  --theme-crosshair: rgb(255 255 255 / 0.08);
+  --theme-selected-border: rgb(255 255 255 / 0.55);
+  --theme-selected-outline: rgb(255 255 255 / 0.14);
+  --theme-selected-glow: rgb(255 255 255 / 0.12);
+  --theme-selected-icon-glow: rgb(255 255 255 / 0.14);
+  --theme-shadow-soft: rgb(0 0 0 / 0.18);
+  --theme-shadow-strong: rgb(0 0 0 / 0.3);
+  --theme-active-bg: var(--color-neutral-950);
+  --theme-active-fg: var(--color-neutral-50);
+  --theme-category-active-bg: rgb(255 255 255 / 0.1);
+  --theme-category-active-fg: var(--color-foreground);
+  --theme-category-active-icon-bg: var(--color-neutral-50);
+  --theme-category-active-icon-fg: var(--color-neutral-950);
+  --theme-floating-button-bg: var(--theme-card-bg-strong);
+  --theme-floating-button-hover: var(--theme-card-hover);
+  --theme-floating-button-fg: var(--color-foreground);
+  --theme-sound-icon-bg: var(--color-neutral-50);
+  --theme-sound-icon-fg: var(--color-neutral-950);
+  --theme-sound-icon-selected-bg: var(--color-neutral-50);
+  --theme-sound-icon-selected-fg: var(--color-neutral-950);
+}
+
+:root[data-theme='light'] {
+  --color-foreground: var(--color-neutral-50);
+  --color-foreground-subtle: var(--color-neutral-500);
+  --color-foreground-subtler: var(--color-neutral-400);
+
+  --theme-body-glow: rgb(0 0 0 / 0.06);
+  --theme-body-bg: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+  --theme-hero-bg: linear-gradient(145deg, rgb(255 255 255 / 0.98), rgb(244 244 245 / 0.98));
+  --theme-panel-bg: linear-gradient(180deg, rgb(255 255 255 / 0.96), rgb(244 244 245 / 0.98));
+  --theme-menu-bg: linear-gradient(180deg, rgb(255 255 255 / 0.98), rgb(240 240 240 / 0.98));
+  --theme-card-bg: rgb(0 0 0 / 0.03);
+  --theme-card-bg-strong: rgb(0 0 0 / 0.05);
+  --theme-card-hover: rgb(0 0 0 / 0.08);
+  --theme-soft-border: rgb(0 0 0 / 0.06);
+  --theme-muted-badge: rgb(0 0 0 / 0.08);
+  --theme-crosshair: rgb(0 0 0 / 0.08);
+  --theme-selected-border: rgb(0 0 0 / 0.16);
+  --theme-selected-outline: rgb(0 0 0 / 0.08);
+  --theme-selected-glow: rgb(0 0 0 / 0.06);
+  --theme-selected-icon-glow: rgb(0 0 0 / 0.08);
+  --theme-shadow-soft: rgb(0 0 0 / 0.08);
+  --theme-shadow-strong: rgb(0 0 0 / 0.12);
+  --theme-active-bg: var(--color-neutral-950);
+  --theme-active-fg: var(--color-neutral-50);
+  --theme-category-active-bg: rgb(255 255 255 / 0.94);
+  --theme-category-active-fg: var(--color-foreground);
+  --theme-category-active-icon-bg: rgb(0 0 0 / 0.08);
+  --theme-category-active-icon-fg: var(--color-foreground);
+  --theme-floating-button-bg: rgb(255 255 255 / 0.92);
+  --theme-floating-button-hover: rgb(255 255 255 / 0.98);
+  --theme-floating-button-fg: var(--color-foreground);
+  --theme-sound-icon-bg: rgb(0 0 0 / 0.08);
+  --theme-sound-icon-fg: var(--color-foreground);
+  --theme-sound-icon-selected-bg: rgb(255 255 255 / 0.96);
+  --theme-sound-icon-selected-fg: var(--color-foreground);
+}

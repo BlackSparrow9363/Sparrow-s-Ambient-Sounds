@@ -1,0 +1,234 @@
+---
+import { BsSoundwave } from 'react-icons/bs/index';
+
+import { Container } from './container';
+
+import { count as soundCount } from '@/lib/sounds';
+
+const count = soundCount();
+---
+
+<section class="hero">
+  <Container wide>
+    <div class="wrapper">
+      <div class="copy">
+        <p class="eyebrow">Sparrow Sound Desk</p>
+
+        <h1 class="title">
+          Sparrow-inspired ambient sound,
+          <span class="line">rebuilt as a cleaner workspace.</span>
+        </h1>
+
+        <p class="desc">
+          Browse curated categories, load ready-made mood packs, and keep every
+          timer, preset, and focus tool within one calmer interface.
+        </p>
+
+        <div class="actions">
+          <a class="primary" href="#app">Open Workspace</a>
+
+          <p class="sounds">
+            <span aria-hidden="true" class="icon">
+              <BsSoundwave />
+            </span>
+            <span>{count} curated sounds</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="art">
+        <div class="artFrame">
+          <img
+            alt="Black and white sparrow logo"
+            class="logo"
+            height={300}
+            src="/logo.svg"
+            width={300}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hero {
+    padding: 26px 0 10px;
+
+    .wrapper {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.9fr);
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, var(--theme-body-glow), transparent 28%),
+        var(--theme-hero-bg);
+      border: 1px solid var(--color-neutral-300);
+      border-radius: 32px;
+      box-shadow: 0 26px 70px var(--theme-shadow-strong);
+    }
+
+    & .copy {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    & .eyebrow {
+      font-size: var(--font-xsm);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-foreground-subtle);
+    }
+
+    & .title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 600;
+      line-height: 0.95;
+
+      & .line {
+        display: block;
+        margin-top: 10px;
+        background: linear-gradient(
+          var(--color-foreground-subtler),
+          var(--color-foreground-subtle)
+        );
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    & .desc {
+      max-width: 40rem;
+      font-size: var(--font-sm);
+      line-height: 1.85;
+      color: var(--color-foreground-subtle);
+    }
+
+    & .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    & .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 168px;
+      height: 48px;
+      padding: 0 20px;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-neutral-50);
+      text-decoration: none;
+      background: var(--color-neutral-950);
+      border: 1px solid var(--color-neutral-300);
+      border-radius: 18px;
+      transition:
+        transform 0.2s,
+        background-color 0.2s;
+
+      &:hover,
+      &:focus-visible {
+        background: var(--color-neutral-800);
+        transform: translateY(-1px);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--color-neutral-500);
+        outline-offset: 2px;
+      }
+    }
+
+    & .sounds {
+      display: flex;
+      column-gap: 8px;
+      align-items: center;
+      width: max-content;
+      height: 42px;
+      padding-right: 16px;
+      font-size: var(--font-xsm);
+      color: var(--color-foreground-subtle);
+      background: var(--theme-card-bg);
+      border: 1px solid var(--color-neutral-300);
+      border-radius: 100px;
+
+      & .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 14px;
+        color: var(--color-foreground);
+        border-right: 1px solid var(--color-neutral-300);
+        border-radius: 0 100px 100px 0;
+      }
+    }
+
+    & .art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & .artFrame {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, 360px);
+      aspect-ratio: 1;
+      background:
+        radial-gradient(circle at center, var(--theme-card-hover), transparent 55%),
+        linear-gradient(180deg, var(--theme-card-bg-strong), transparent);
+      border: 1px solid var(--color-neutral-300);
+      border-radius: 28px;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        background: var(--theme-crosshair);
+      }
+
+      &::before {
+        width: 1px;
+        height: 76%;
+      }
+
+      &::after {
+        width: 76%;
+        height: 1px;
+      }
+    }
+
+    & .logo {
+      width: min(78%, 300px);
+      height: auto;
+      filter: drop-shadow(0 16px 32px rgb(0 0 0 / 0.35));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero .wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .hero .art {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero .wrapper {
+      padding: 24px;
+    }
+  }
+</style>

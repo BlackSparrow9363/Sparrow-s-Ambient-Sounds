@@ -1,0 +1,72 @@
+.range {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+
+  /********** Range Input Styles **********/
+
+  /* Range Reset */
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+
+  /* Removes default focus */
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+
+  &::-webkit-slider-runnable-track {
+    height: 0.35rem;
+    background-color: rgb(255 255 255 / 0.14);
+    border-radius: 999px;
+  }
+
+  &::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+    appearance: none;
+    background-color: var(--color-neutral-950);
+    border: 1px solid var(--color-neutral-400);
+    border-radius: 50%;
+  }
+
+  &:not(:disabled):focus::-webkit-slider-thumb {
+    border: 1px solid var(--color-neutral-700);
+    outline: 3px solid var(--color-neutral-400);
+    outline-offset: 0.125rem;
+  }
+
+  /******** Firefox styles ********/
+
+  &::-moz-range-track {
+    height: 0.35rem;
+    background-color: rgb(255 255 255 / 0.14);
+    border-radius: 999px;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+    background-color: var(--color-neutral-950);
+    border: none;
+    border: 1px solid var(--color-neutral-400);
+    border-radius: 0;
+    border-radius: 50%;
+  }
+
+  &:not(:disabled):focus::-moz-range-thumb {
+    border: 1px solid var(--color-neutral-700);
+    outline: 3px solid var(--color-neutral-400);
+    outline-offset: 0.125rem;
+  }
+}

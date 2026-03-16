@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: var(--font-md);
+  color: var(--theme-floating-button-fg);
+  pointer-events: auto;
+  cursor: pointer;
+  background:
+    linear-gradient(180deg, var(--theme-card-hover), var(--theme-card-bg)),
+    var(--theme-floating-button-bg);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px var(--theme-shadow-soft);
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-neutral-400);
+    outline-offset: 2px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--theme-floating-button-hover);
+    transform: translateY(-1px);
+  }
+}

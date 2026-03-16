@@ -1,0 +1,72 @@
+---
+import { pwaInfo } from 'virtual:pwa-info'; // eslint-disable-line
+
+import { Reload } from '@/components/reload';
+
+import { count } from '@/lib/sounds';
+
+import '@/styles/global.css';
+
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const title =
+  Astro.props.title || 'Sparrow Sound Desk: Ambient Sounds for Focus and Calm';
+const description =
+  Astro.props.description ||
+  `Sparrow Sound Desk is a monochrome ambient sound workspace featuring ${count()} curated sounds for focus, calm, and atmosphere.`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width" name="viewport" />
+    <meta content={Astro.generator} name="generator" />
+    <meta content="#050505" name="theme-color" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+
+    <title>{title}</title>
+    <meta content={title} name="title" />
+    <meta content={description} name="description" />
+
+    <meta content={title} property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content="Sparrow Sound Desk" property="og:site_name" />
+    <meta content="https://moodist.app" property="og:url" />
+    <meta content="website" property="og:type" />
+    <meta content="https://moodist.app/og.png" property="og:image" />
+
+    <meta content="summary_large_image" name="twitter:card" />
+
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+
+    <script is:inline>
+      (() => {
+        const key = 'moodist-theme';
+        const raw = window.localStorage.getItem(key);
+        const stored = raw ? JSON.parse(raw) : null;
+        const theme =
+          stored ||
+          (window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark');
+
+        document.documentElement.dataset.theme = theme;
+
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        metaTheme?.setAttribute(
+          'content',
+          theme === 'light' ? '#fcfcfc' : '#050505',
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <Reload client:load />
+  </body>
+</html>

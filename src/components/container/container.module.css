@@ -1,0 +1,12 @@
+.container {
+  width: min(92%, 760px);
+  margin: 0 auto;
+
+  &.tight {
+    max-width: 450px;
+  }
+
+  &.wide {
+    max-width: 1240px;
+  }
+}

@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-neutral-50);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  line-height: 1.5;
+  color: var(--color-foreground);
+  background:
+    radial-gradient(circle at top center, var(--theme-body-glow), transparent 28%),
+    var(--theme-body-bg);
+  /* Workaround for modal and scrollbar layout shifts */
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  border: 0;
+}
+
+::selection {
+  color: var(--color-foreground);
+  background-color: var(--color-neutral-300);
+}
