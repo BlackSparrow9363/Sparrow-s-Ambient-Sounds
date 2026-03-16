@@ -38,14 +38,6 @@ git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
 git push -u origin main
 ```
 
-## Google indexing
-
-After the site is live:
-
-1. Open [Google Search Console](https://search.google.com/search-console/about).
-2. Add your Vercel domain or your custom domain.
-3. Submit your sitemap URL, usually `https://your-domain.com/sitemap-index.xml` or `https://your-domain.com/sitemap.xml`.
-
 ## Tech
 
 - Astro
