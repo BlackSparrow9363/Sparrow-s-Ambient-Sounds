@@ -1,22 +1,7 @@
-.wrapper {
-  position: fixed;
-  right: 20px;
-  bottom: 118px;
-  z-index: 17;
-  pointer-events: none;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    width: auto;
-  }
-}
-
-@media (max-width: 900px) {
-  .wrapper {
-    right: 12px;
-    bottom: 104px;
-  }
+.container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }

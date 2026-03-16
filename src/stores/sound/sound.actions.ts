@@ -28,25 +28,35 @@ export const createActions: StateCreator<
   [],
   SoundActions
 > = (set, get) => {
+  const resetSound = (sound: SoundState['sounds'][string]) => ({
+    ...sound,
+    isSelected: false,
+    rate: 1,
+    volume: 0.5,
+  });
+
   return {
     lock() {
       set({ locked: true });
     },
 
     override(newSounds) {
-      get().unselectAll();
-
-      const sounds = get().sounds;
+      const sounds = Object.fromEntries(
+        Object.entries(get().sounds).map(([id, sound]) => [id, resetSound(sound)]),
+      ) as SoundState['sounds'];
 
       Object.keys(newSounds).forEach(sound => {
         if (sounds[sound]) {
-          sounds[sound].isSelected = true;
-          sounds[sound].rate = 1;
-          sounds[sound].volume = newSounds[sound];
+          sounds[sound] = {
+            ...sounds[sound],
+            isSelected: true,
+            rate: 1,
+            volume: newSounds[sound],
+          };
         }
       });
 
-      set({ history: null, sounds: { ...sounds } });
+      set({ history: null, isPlaying: true, sounds });
     },
 
     pause() {
@@ -100,21 +110,20 @@ export const createActions: StateCreator<
     },
 
     shuffle() {
-      const sounds = get().sounds;
+      const sounds = Object.fromEntries(
+        Object.entries(get().sounds).map(([id, sound]) => [id, resetSound(sound)]),
+      ) as SoundState['sounds'];
       const ids = Object.keys(sounds);
-
-      ids.forEach(id => {
-        sounds[id].isSelected = false;
-        sounds[id].rate = 1;
-        sounds[id].volume = 0.5;
-      });
 
       const randomIDs = pickMany(ids, 4);
 
       randomIDs.forEach(id => {
-        sounds[id].isSelected = true;
-        sounds[id].rate = 1;
-        sounds[id].volume = random(0.2, 1);
+        sounds[id] = {
+          ...sounds[id],
+          isSelected: true,
+          rate: 1,
+          volume: random(0.2, 1),
+        };
       });
 
       set({ history: null, isPlaying: true, sounds });
@@ -155,22 +164,18 @@ export const createActions: StateCreator<
 
       if (noSelected) return;
 
-      const sounds = get().sounds;
+      const currentSounds = get().sounds;
 
       if (pushToHistory) {
-        const history = JSON.parse(JSON.stringify(sounds));
+        const history = JSON.parse(JSON.stringify(currentSounds));
         set({ history });
       }
 
-      const ids = Object.keys(sounds);
+      const sounds = Object.fromEntries(
+        Object.entries(currentSounds).map(([id, sound]) => [id, resetSound(sound)]),
+      ) as SoundState['sounds'];
 
-      ids.forEach(id => {
-        sounds[id].isSelected = false;
-        sounds[id].rate = 1;
-        sounds[id].volume = 0.5;
-      });
-
-      set({ sounds });
+      set({ isPlaying: false, sounds });
     },
   };
 };

@@ -195,6 +195,16 @@ export function App() {
   );
   const activeMixPreview = selectedSounds.slice(0, 4);
   const hiddenMixCount = Math.max(totalSelected - activeMixPreview.length, 0);
+  const visibleLibrarySounds = filteredSounds;
+  const visibleLibraryId = activeCategory?.id || 'library';
+  const visibleLibraryFunctional = activeCategory?.id !== 'favorites';
+  const mountedPlaybackCategories = useMemo(
+    () =>
+      categories.filter(category =>
+        activeCategory?.id === 'favorites' ? true : category.id !== activeCategory?.id,
+      ),
+    [activeCategory?.id, categories],
+  );
 
   const applyMoodPack = (pack: (typeof moodPacks)[number]) => {
     override(pack.sounds);
@@ -422,8 +432,12 @@ export function App() {
                 </button>
               </div>
 
-              {filteredSounds.length ? (
-                <Sounds functional id={activeCategory?.id || 'library'} sounds={filteredSounds} />
+              {visibleLibrarySounds.length ? (
+                <Sounds
+                  functional={visibleLibraryFunctional}
+                  id={visibleLibraryId}
+                  sounds={visibleLibrarySounds}
+                />
               ) : (
                 <div className={styles.emptyState}>
                   <div className={styles.emptyStateTitle}>No sounds match this view.</div>
@@ -433,6 +447,17 @@ export function App() {
                   </p>
                 </div>
               )}
+
+              <div aria-hidden="true" className={styles.audioMounts}>
+                {mountedPlaybackCategories.map(category => (
+                  <Sounds
+                    functional
+                    id={`${category.id}-playback`}
+                    key={`${category.id}-playback`}
+                    sounds={category.sounds}
+                  />
+                ))}
+              </div>
             </main>
 
             <aside className={styles.mixPanel}>
@@ -594,11 +619,11 @@ export function App() {
                 {isDarkTheme ? <IoSunnyOutline /> : <IoMoonSharp />}
                 <span>{isDarkTheme ? 'Day' : 'Night'}</span>
               </button>
+
+              <Toolbar />
             </div>
           </section>
         </Container>
-
-        <Toolbar />
         <SharedModal />
       </StoreConsumer>
     </SnackbarProvider>
